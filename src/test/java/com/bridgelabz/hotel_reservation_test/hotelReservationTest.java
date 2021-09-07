@@ -3,13 +3,18 @@ package com.bridgelabz.hotel_reservation_test;
 
 import com.bridgelabz.*;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
+
+import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class hotelReservationTest {
-    @Test
+    HotelReservation hotelReservation = new HotelReservation();
+
+    @Before
     public void ifHotel_Add_GetsSucess() {
-        HotelReservation hotelReservation = new HotelReservation();
 
         HashMap<CustomerType, Rate> a = new HashMap<CustomerType, Rate>();
         a.put(CustomerType.REGULAR , new Rate(110, 90) );
@@ -26,7 +31,12 @@ public class hotelReservationTest {
         c.put(CustomerType.REWARDED, new Rate(100,40));
         hotelReservation.addHotel("Ridgewood",c,5);
 
-        hotelReservation.printDetails();
-        Assert.assertEquals(3, hotelReservation.hotelInfo.size());
+    }
+
+    @Test
+    public void nameAndPrice_OfChipestHotels() {
+        LocalDate d1 = LocalDate.of(2020,9,10);
+        LocalDate d2 = LocalDate.of(2020,9,11);
+        hotelReservation.cheapeastHotel(d1,d2);
     }
 }
