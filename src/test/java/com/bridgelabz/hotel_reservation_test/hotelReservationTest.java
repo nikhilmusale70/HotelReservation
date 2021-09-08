@@ -56,4 +56,14 @@ public class hotelReservationTest {
         hotelReservation.cheapeastHotel();
         hotelReservation.bestRatedHotel();
     }
+
+    @Test
+    public void bestRatedHotel_WithCheapestRate() {
+        LocalDate d1 = LocalDate.of(2020,9,11);
+        LocalDate d2 = LocalDate.of(2020,9,12);
+
+        hotelReservation.rewardedDates(d1,d2);
+        hotelReservation.rewardedCheapeastHotel();
+        hotelReservation.rewardedCheapestBestRatedHotel();
+    }
 }

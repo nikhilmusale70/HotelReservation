@@ -70,4 +70,53 @@ public class HotelReservation {
         System.out.println("Best rated Hotel Name :- " + hotelInfo.get(n).hotelName + " Price :- " + price[n]);
         
     }
+
+    //rewarded customers
+    ArrayList<LocalDate> rewardedMultiDates = new ArrayList<LocalDate>(3);
+    public void rewardedDates(LocalDate d1, LocalDate d2){
+        rewardedMultiDates.add(d1);
+        long daysInBetween = ChronoUnit.DAYS.between(d1,d2);
+
+        while (daysInBetween>0){
+            rewardedMultiDates.add(rewardedMultiDates.get(rewardedMultiDates.size()-1).plusDays(1));
+            daysInBetween--;
+        }
+    }
+
+    Integer[] rewardedPrice ={0,0,0};
+    public void rewardedCheapeastHotel(){
+
+        for (int i=0; i<rewardedMultiDates.size(); i++){
+            for (int j=0; j<hotelInfo.size(); j++) {
+                if (rewardedMultiDates.get(i).getDayOfWeek().equals(DayOfWeek.SATURDAY) || rewardedMultiDates.get(i).getDayOfWeek().equals(DayOfWeek.SUNDAY)){
+                    rewardedPrice[j] += hotelInfo.get(j).priceOfHotel.get(CustomerType.REWARDED).weekEndRate;
+                }
+                else
+                    rewardedPrice[j] += hotelInfo.get(j).priceOfHotel.get(CustomerType.REWARDED).weekDayRate;
+            }
+        }
+    }
+
+    public void rewardedCheapestBestRatedHotel() {
+        HotelInfo[] rewardedFlag = new HotelInfo[3];
+        ArrayList<Integer> rewardedStoringRating = new ArrayList<>();
+
+        for (int i=0 ; i<hotelInfo.size(); i++){
+            for (int j=0; j< rewardedPrice.length ; j++){
+                if (i != j) {
+                    if (rewardedPrice[i].equals(rewardedPrice[j])) {
+                        rewardedFlag[i] = hotelInfo.get(i);
+                    }
+                }
+            }
+        }
+        for (int i=0; i<rewardedFlag.length; i++){
+            rewardedStoringRating.add(hotelInfo.get(i).rating);
+        }
+
+        int n = rewardedStoringRating.indexOf(Collections.max(rewardedStoringRating));
+
+        System.out.println("Cheapest hotel with best rate is :- " + hotelInfo.get(n).hotelName + " \nWith rating :- " +hotelInfo.get(n).rating + " \nPrice :- "+ rewardedPrice[n]);
+
+    }
 }
