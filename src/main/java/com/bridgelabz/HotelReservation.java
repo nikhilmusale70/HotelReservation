@@ -30,7 +30,6 @@ public class HotelReservation {
         Integer[] price ={0,0,0};
         for (int i=0; i<multiDates.size(); i++){
             for (int j=0; j<hotelInfo.size(); j++) {
-
                 if (multiDates.get(i).getDayOfWeek().equals(DayOfWeek.SATURDAY) || multiDates.get(i).getDayOfWeek().equals(DayOfWeek.SUNDAY)){
                     price[j] += hotelInfo.get(j).priceOfHotel.get(CustomerType.REGULAR).weekEndRate;
                 }

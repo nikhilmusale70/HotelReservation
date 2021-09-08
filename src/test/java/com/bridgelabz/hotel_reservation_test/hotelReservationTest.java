@@ -6,13 +6,15 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.script.ScriptContext;
+import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Scanner;
 
 public class hotelReservationTest {
     HotelReservation hotelReservation = new HotelReservation();
-
     @Before
     public void ifHotel_Add_GetsSucess() {
 
@@ -34,7 +36,17 @@ public class hotelReservationTest {
     }
 
     @Test
-    public void nameAndPrice_OfChipestHotels() {
+    public void nameAndPrice_OfCheapestHotels() throws IOException {
+//        Scanner sc = new Scanner(System.in);
+//        System.out.println("Enter date 1 :- ");
+//        String s1 = sc.nextLine();
+//        System.out.println("Enter date 2 :- ");
+//        String s2 = sc.nextLine();
+//
+//        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yy MM dd");
+//        LocalDate d1 = LocalDate.parse(s1,dateFormat);
+//        LocalDate d2 = LocalDate.parse(s2, dateFormat);
+
         LocalDate d1 = LocalDate.of(2020,9,10);
         LocalDate d2 = LocalDate.of(2020,9,11);
         hotelReservation.cheapeastHotel(d1,d2);
