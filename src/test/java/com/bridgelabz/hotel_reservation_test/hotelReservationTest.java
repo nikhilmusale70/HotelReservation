@@ -24,7 +24,7 @@ public class hotelReservationTest {
         hotelReservation.addHotel("Lakewood",a,3);
 
         HashMap<CustomerType, Rate> b = new HashMap<CustomerType, Rate>();
-        b.put(CustomerType.REGULAR , new Rate(160, 60) );
+        b.put(CustomerType.REGULAR , new Rate(150, 50) );
         b.put(CustomerType.REWARDED, new Rate(110,50));
         hotelReservation.addHotel("Bridgewood",b,4);
 

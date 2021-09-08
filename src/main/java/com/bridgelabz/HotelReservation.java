@@ -37,12 +37,29 @@ public class HotelReservation {
                     price[j] += hotelInfo.get(j).priceOfHotel.get(CustomerType.REGULAR).weekDayRate;
             }
         }
-
         int n = Arrays.asList(price).indexOf(Collections.min(Arrays.asList(price)));
-        System.out.println("Cheapest hotel is :- " + hotelInfo.get(n).hotelName + " Price :- "+ price[n]);
+        cheapestBestRatedHotel();
+
     }
 
-    public void cheapestBestRatedHotel(){
+    public void cheapestBestRatedHotel() {
+        ArrayList<HotelInfo> flag = new ArrayList<HotelInfo>(3);
+        ArrayList<Integer> storingRating = new ArrayList<>();
+
+        for (int i=0 ; i<hotelInfo.size(); i++){
+            for (int j=0; j< price.length ; j++){
+                if (i != j) {
+                    if (price[i].equals(price[j])) {
+                        flag.add(hotelInfo.get(i));
+                    }
+                }
+            }
+        }
+        for (int i=0; i<flag.size(); i++){
+            storingRating.add(hotelInfo.get(i).rating);
+        }
+        int n = storingRating.indexOf(Collections.max(storingRating));
+        System.out.println("Cheapest hotel with best rate is :- " + hotelInfo.get(n).hotelName + " Price :- "+ price[n]);
 
     }
 }
