@@ -1,6 +1,8 @@
 package com.bridgelabz;
 
 import java.lang.reflect.Array;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -118,5 +120,17 @@ public class HotelReservation {
 
         System.out.println("Cheapest hotel with best rate is :- " + hotelInfo.get(n).hotelName + " \nWith rating :- " +hotelInfo.get(n).rating + " \nPrice :- "+ rewardedPrice[n]);
 
+    }
+
+    public boolean dateValidation(String d1){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yy MM dd");
+        dateFormat.setLenient(false);
+        try {
+            dateFormat.parse(d1.trim());
+        }
+        catch (ParseException pe) {
+            return false;
+        }
+        return true;
     }
 }

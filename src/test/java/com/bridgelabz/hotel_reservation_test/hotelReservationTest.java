@@ -58,12 +58,24 @@ public class hotelReservationTest {
     }
 
     @Test
-    public void bestRatedHotel_WithCheapestRate() {
-        LocalDate d1 = LocalDate.of(2020,9,11);
-        LocalDate d2 = LocalDate.of(2020,9,12);
+    public void bestRatedHotel_WithCheapestRate_ForRewardedCustomers() {
 
-        hotelReservation.rewardedDates(d1,d2);
-        hotelReservation.rewardedCheapeastHotel();
-        hotelReservation.rewardedCheapestBestRatedHotel();
+        String s1 = "20 09 11";
+        String s2 = "20 09 12";
+
+        if(hotelReservation.dateValidation(s1) && hotelReservation.dateValidation(s2)) {
+
+            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yy MM dd");
+            LocalDate d1 = LocalDate.parse(s1, dateFormat);
+            LocalDate d2 = LocalDate.parse(s2, dateFormat);
+
+
+            hotelReservation.rewardedDates(d1, d2);
+            hotelReservation.rewardedCheapeastHotel();
+            hotelReservation.rewardedCheapestBestRatedHotel();
+        }
+
+        else
+            System.out.println("Invalid input");
     }
 }
