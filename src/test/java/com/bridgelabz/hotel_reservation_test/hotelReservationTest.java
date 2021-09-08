@@ -15,6 +15,7 @@ import java.util.Scanner;
 
 public class hotelReservationTest {
     HotelReservation hotelReservation = new HotelReservation();
+    
     @Before
     public void ifHotel_Add_GetsSucess() {
 
