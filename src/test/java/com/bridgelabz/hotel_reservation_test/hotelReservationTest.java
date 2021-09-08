@@ -36,19 +36,23 @@ public class hotelReservationTest {
     }
 
     @Test
-    public void nameAndPrice_OfCheapestHotels() throws IOException {
-//        Scanner sc = new Scanner(System.in);
-//        System.out.println("Enter date 1 :- ");
-//        String s1 = sc.nextLine();
-//        System.out.println("Enter date 2 :- ");
-//        String s2 = sc.nextLine();
-//
-//        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yy MM dd");
-//        LocalDate d1 = LocalDate.parse(s1,dateFormat);
-//        LocalDate d2 = LocalDate.parse(s2, dateFormat);
+    public void nameAndPrice_OfCheapestHotels(){
 
         LocalDate d1 = LocalDate.of(2020,9,11);
         LocalDate d2 = LocalDate.of(2020,9,12);
-        hotelReservation.cheapeastHotel(d1,d2);
+
+        hotelReservation.dates(d1,d2);
+        hotelReservation.cheapeastHotel();
+        hotelReservation.cheapestBestRatedHotel();
+    }
+
+    @Test
+    public void bestRatedHotel_WithPrice() {
+        LocalDate d1 = LocalDate.of(2020,9,11);
+        LocalDate d2 = LocalDate.of(2020,9,12);
+
+        hotelReservation.dates(d1,d2);
+        hotelReservation.cheapeastHotel();
+        hotelReservation.bestRatedHotel();
     }
 }

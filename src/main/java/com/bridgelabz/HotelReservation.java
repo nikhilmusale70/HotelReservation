@@ -1,5 +1,6 @@
 package com.bridgelabz;
 
+import java.lang.reflect.Array;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -16,10 +17,8 @@ public class HotelReservation {
         hotelInfo.add(hotelInfoObj);
     }
 
-    Integer[] price ={0,0,0};
-    public void cheapeastHotel(LocalDate d1, LocalDate d2){
-        ArrayList<LocalDate> multiDates = new ArrayList<LocalDate>(3);
-
+    ArrayList<LocalDate> multiDates = new ArrayList<LocalDate>(3);
+    public void dates(LocalDate d1, LocalDate d2){
         multiDates.add(d1);
         long daysInBetween = ChronoUnit.DAYS.between(d1,d2);
 
@@ -27,6 +26,10 @@ public class HotelReservation {
             multiDates.add(multiDates.get(multiDates.size()-1).plusDays(1));
             daysInBetween--;
         }
+    }
+
+    Integer[] price ={0,0,0};
+    public void cheapeastHotel(){
 
         for (int i=0; i<multiDates.size(); i++){
             for (int j=0; j<hotelInfo.size(); j++) {
@@ -37,9 +40,6 @@ public class HotelReservation {
                     price[j] += hotelInfo.get(j).priceOfHotel.get(CustomerType.REGULAR).weekDayRate;
             }
         }
-        int n = Arrays.asList(price).indexOf(Collections.min(Arrays.asList(price)));
-        cheapestBestRatedHotel();
-
     }
 
     public void cheapestBestRatedHotel() {
@@ -58,8 +58,16 @@ public class HotelReservation {
         for (int i=0; i<flag.size(); i++){
             storingRating.add(hotelInfo.get(i).rating);
         }
-        int n = storingRating.indexOf(Collections.max(storingRating));
-        System.out.println("Cheapest hotel with best rate is :- " + hotelInfo.get(n).hotelName + " Price :- "+ price[n]);
+    }
 
+    public void bestRatedHotel(){
+    ArrayList<Integer> bestRated = new ArrayList<Integer>();
+
+        for (int i=0; i<hotelInfo.size() ;i++){
+            bestRated.add(hotelInfo.get(i).rating);
+        }
+        int n = bestRated.indexOf(Collections.max(bestRated));
+        System.out.println("Best rated Hotel Name :- " + hotelInfo.get(n).hotelName + " Price :- " + price[n]);
+        
     }
 }
