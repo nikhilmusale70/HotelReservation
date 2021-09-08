@@ -9,6 +9,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class HotelReservation {
     public ArrayList<HotelInfo> hotelInfo = new ArrayList<HotelInfo>(3);
@@ -122,15 +123,15 @@ public class HotelReservation {
 
     }
 
-    public boolean dateValidation(String d1){
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yy MM dd");
-        dateFormat.setLenient(false);
+    public boolean dateValidation(String d1) throws HotelException {
         try {
-            dateFormat.parse(d1.trim());
+            Pattern pattern = Pattern.compile("\\d{4}\\-(0?[1-9]|1[012])\\-(0?[1-9]|[12][0-9]|3[01])*");
+            return pattern.matcher(d1).matches();
+
         }
-        catch (ParseException pe) {
-            return false;
+        catch (Exception exce) {
+            throw new HotelException("Invalid Input");
+
         }
-        return true;
     }
 }

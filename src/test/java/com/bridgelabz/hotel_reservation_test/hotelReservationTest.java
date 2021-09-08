@@ -58,24 +58,27 @@ public class hotelReservationTest {
     }
 
     @Test
-    public void bestRatedHotel_WithCheapestRate_ForRewardedCustomers() {
+    public void bestRatedHotel_WithCheapestRate_ForRewardedCustomers() throws HotelException {
 
         String s1 = "20 09 11";
         String s2 = "20 09 12";
 
-        if(hotelReservation.dateValidation(s1) && hotelReservation.dateValidation(s2)) {
+        try {
+            hotelReservation.dateValidation(s1);
 
             DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yy MM dd");
             LocalDate d1 = LocalDate.parse(s1, dateFormat);
             LocalDate d2 = LocalDate.parse(s2, dateFormat);
 
-
             hotelReservation.rewardedDates(d1, d2);
             hotelReservation.rewardedCheapeastHotel();
             hotelReservation.rewardedCheapestBestRatedHotel();
         }
+        catch (Exception e){
+            throw new HotelException("Invalid input");
+        }
 
-        else
-            System.out.println("Invalid input");
+
+
     }
 }
