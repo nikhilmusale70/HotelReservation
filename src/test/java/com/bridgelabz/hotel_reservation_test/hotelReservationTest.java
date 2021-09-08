@@ -47,8 +47,8 @@ public class hotelReservationTest {
 //        LocalDate d1 = LocalDate.parse(s1,dateFormat);
 //        LocalDate d2 = LocalDate.parse(s2, dateFormat);
 
-        LocalDate d1 = LocalDate.of(2020,9,10);
-        LocalDate d2 = LocalDate.of(2020,9,11);
+        LocalDate d1 = LocalDate.of(2020,9,11);
+        LocalDate d2 = LocalDate.of(2020,9,12);
         hotelReservation.cheapeastHotel(d1,d2);
     }
 }

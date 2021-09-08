@@ -16,6 +16,7 @@ public class HotelReservation {
         hotelInfo.add(hotelInfoObj);
     }
 
+    Integer[] price ={0,0,0};
     public void cheapeastHotel(LocalDate d1, LocalDate d2){
         ArrayList<LocalDate> multiDates = new ArrayList<LocalDate>(3);
 
@@ -27,7 +28,6 @@ public class HotelReservation {
             daysInBetween--;
         }
 
-        Integer[] price ={0,0,0};
         for (int i=0; i<multiDates.size(); i++){
             for (int j=0; j<hotelInfo.size(); j++) {
                 if (multiDates.get(i).getDayOfWeek().equals(DayOfWeek.SATURDAY) || multiDates.get(i).getDayOfWeek().equals(DayOfWeek.SUNDAY)){
@@ -40,5 +40,9 @@ public class HotelReservation {
 
         int n = Arrays.asList(price).indexOf(Collections.min(Arrays.asList(price)));
         System.out.println("Cheapest hotel is :- " + hotelInfo.get(n).hotelName + " Price :- "+ price[n]);
+    }
+
+    public void cheapestBestRatedHotel(){
+
     }
 }
