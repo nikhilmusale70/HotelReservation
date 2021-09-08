@@ -61,6 +61,10 @@ public class HotelReservation {
         for (int i=0; i<flag.size(); i++){
             storingRating.add(hotelInfo.get(i).rating);
         }
+
+        int n = storingRating.indexOf(Collections.max(storingRating));
+        System.out.println("Cheapest hotel with best rate is :- " + hotelInfo.get(n).hotelName + " \nWith rating :- " +hotelInfo.get(n).rating + " \nPrice :- "+ price[n]);
+
     }
 
     public void bestRatedHotel(){

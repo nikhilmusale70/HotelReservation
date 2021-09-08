@@ -77,8 +77,16 @@ public class hotelReservationTest {
         catch (Exception e){
             throw new HotelException("Invalid input");
         }
+    }
 
+    @Test
+    public void nameAndPrice_OfCheapestHotels_forRegularCustomer(){
 
+        LocalDate d1 = LocalDate.of(2020,9,11);
+        LocalDate d2 = LocalDate.of(2020,9,12);
 
+        hotelReservation.dates(d1,d2);
+        hotelReservation.cheapeastHotel();
+        hotelReservation.cheapestBestRatedHotel();
     }
 }
